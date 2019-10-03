@@ -1,0 +1,34 @@
+#-*- coding: windows-1250 -*-
+# Gry
+# Demonstruje tworzenie modu³u
+
+class Player(object):
+    """ Uczestnik gry. """
+    def __init__(self, name, score = 0):
+        self.name = name
+        self.score = score
+
+    def __str__(self):
+        rep = self.name + ":\t" + str(self.score)
+        return rep
+
+def ask_yes_no(question):
+    """Zadaj pytanie, na które mo¿na odpowiedzieæ tak lub nie."""
+    response = None
+    while response not in ("t", "n"):
+        response = input(question).lower()
+    return response
+
+def ask_number(question, low, high):
+    """Poproœ o podanie liczby z okreœlonego zakresu."""
+    response = None
+    while response not in range(low, high):
+        response = int(input(question))
+    return response
+
+  
+if __name__ == "__main__":
+    print("Uruchomi³eœ ten modu³ bezpoœrednio (zamiast go zaimportowaæ).")
+    input("\n\nAby zakoñczyæ program, naciœnij klawisz Enter.")
+
+
