@@ -1,6 +1,6 @@
-#-*- coding: windows-1250 -*-
-# Gry
-# Demonstruje tworzenie modu≥u
+Ôªø# coding: utf-8
+# Modu≈Ç Gry
+# Demonstruje tworzenie modu≈Çu
 
 class Player(object):
     """ Uczestnik gry. """
@@ -13,14 +13,14 @@ class Player(object):
         return rep
 
 def ask_yes_no(question):
-    """Zadaj pytanie, na ktÛre moøna odpowiedzieÊ tak lub nie."""
+    """Zadaj pytanie, na kt√≥re mo≈ºna odpowiedzieƒá tak lub nie."""
     response = None
     while response not in ("t", "n"):
         response = input(question).lower()
     return response
 
 def ask_number(question, low, high):
-    """Poproú o podanie liczby z okreúlonego zakresu."""
+    """Popro≈õ o podanie liczby z okre≈õlonego zakresu."""
     response = None
     while response not in range(low, high):
         response = int(input(question))
@@ -28,7 +28,5 @@ def ask_number(question, low, high):
 
   
 if __name__ == "__main__":
-    print("Uruchomi≥eú ten modu≥ bezpoúrednio (zamiast go zaimportowaÊ).")
-    input("\n\nAby zakoÒczyÊ program, naciúnij klawisz Enter.")
-
-
+    print("Uruchomi≈Çe≈õ ten modu≈Ç bezpo≈õrednio (zamiast go zaimportowaƒá).")
+    input("\n\nAby zako≈Ñczyƒá program, naci≈õnij klawisz Enter.")

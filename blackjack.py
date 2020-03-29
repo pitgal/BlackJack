@@ -1,7 +1,7 @@
-#-*- coding: windows-1250 -*-
-# Blackjack.  Od 1 do 7 graczy wspó³zawodniczy z rozdaj¹cym
-import karty, gry
+# coding: utf-8
+# Blackjack.  Od 1 do 7 graczy wspÃ³Å‚zawodniczy z rozdajÄ…cym
 
+import karty, gry
 
 class BJ_Card(karty.Card):
     """ Karta do blackjacka. """
@@ -28,7 +28,7 @@ class BJ_Deck(karty.Deck):
 
 
 class BJ_Hand(karty.Hand):
-    """ Rêka w blackjacku. """
+    """ RÄ™ka w blackjacku. """
 
     def __init__(self, name):
         super(BJ_Hand, self).__init__()
@@ -42,26 +42,26 @@ class BJ_Hand(karty.Hand):
 
     @property
     def total(self):
-        # jeœli karta w rêce ma wartoœæ None, to i wartoœæ sumy wynosi None
+        # jeÅ›li karta w rÄ™ce ma wartoÅ›Ä‡ None, to i wartoÅ›Ä‡ sumy wynosi None
         for card in self.cards:
             if not card.value:
                 return None
 
-        # zsumuj wartoœci kart, traktuj ka¿dego asa jako 1
+        # zsumuj wartoÅ›ci kart, traktuj kaÅ¼dego asa jako 1
         t = 0
         for card in self.cards:
             t += card.value
 
-        # ustal, czy rêka zawiera asa
+        # ustal, czy rÄ™ka zawiera asa
         contains_ace = False
         for card in self.cards:
             if card.value == BJ_Card.ACE_VALUE:
                 contains_ace = True
 
-        # jeœli rêka zawiera asa, a suma jest wystarczaj¹co niska,
+        # jeÅ›li rÄ™ka zawiera asa, a suma jest wystarczajÄ…co niska,
         # potraktuj asa jako 11
         if contains_ace and t <= 11:
-            # dodaj tylko 10, poniewa¿ ju¿ dodaliœmy 1 za asa
+            # dodaj tylko 10, poniewaÅ¼ juÅ¼ dodaliÅ›my 1 za asa
             t += 10
 
         return t
@@ -77,11 +77,11 @@ class BJ_Player(BJ_Hand):
     """ Gracz w blackjacku. """
 
     def is_hitting(self):
-        response = gry.ask_yes_no("\n" + self.name + ", chcesz dobraæ kartê? (T/N): ")
+        response = gry.ask_yes_no("\n" + self.name + ", chcesz dobraÄ‡ kartÄ™? (T/N): ")
         return response == "t"
 
     def bust(self):
-        print(self.name, "ma furê.")
+        print(self.name, "ma furÄ™.")
         self.lose()
 
     def lose(self):
@@ -95,13 +95,13 @@ class BJ_Player(BJ_Hand):
 
 
 class BJ_Dealer(BJ_Hand):
-    """ Rozdaj¹cy w blackjacku. """
+    """ RozdajÄ…cy w blackjacku. """
 
     def is_hitting(self):
         return self.total < 17
 
     def bust(self):
-        print(self.name, "ma furê.")
+        print(self.name, "ma furÄ™.")
 
     def flip_first_card(self):
         first_card = self.cards[0]
@@ -117,7 +117,7 @@ class BJ_Game(object):
             player = BJ_Player(name)
             self.players.append(player)
 
-        self.dealer = BJ_Dealer("Rozdaj¹cy")
+        self.dealer = BJ_Dealer("RozdajÄ…cy")
 
         self.deck = BJ_Deck()
         self.deck.populate()
@@ -141,9 +141,9 @@ class BJ_Game(object):
         #przygotowanie tali kart
         self.deck.populate()
 
-        # rozdaj ka¿demu pocz¹tkowe dwie karty
+        # rozdaj kaÅ¼demu poczÄ…tkowe dwie karty
         self.deck.deal(self.players + [self.dealer], per_hand=2)
-        self.dealer.flip_first_card()  # ukryj pierwsz¹ kartê rozdaj¹cego
+        self.dealer.flip_first_card()  # ukryj pierwszÄ… kartÄ™ rozdajÄ…cego
         for player in self.players:
             print(player)
         print(self.dealer)
@@ -152,22 +152,22 @@ class BJ_Game(object):
         for player in self.players:
             self.__additional_cards(player)
 
-        self.dealer.flip_first_card()  # ods³oñ pierwsz¹ kartê rozdaj¹cego
+        self.dealer.flip_first_card()  # odsÅ‚oÅ„ pierwszÄ… kartÄ™ rozdajÄ…cego
 
         if not self.still_playing:
-            # poniewa¿ wszyscy gracze dostali furê, poka¿ tylko rêkê rozdaj¹cego
+            # poniewaÅ¼ wszyscy gracze dostali furÄ™, pokaÅ¼ tylko rÄ™kÄ™ rozdajÄ…cego
             print(self.dealer)
         else:
-            # daj dodatkowe karty rozdaj¹cemu
+            # daj dodatkowe karty rozdajÄ…cemu
             print(self.dealer)
             self.__additional_cards(self.dealer)
 
             if self.dealer.is_busted():
-                # wygrywa ka¿dy, kto jeszcze pozostaje w grze
+                # wygrywa kaÅ¼dy, kto jeszcze pozostaje w grze
                 for player in self.still_playing:
                     player.win()
             else:
-                # porównaj punkty ka¿dego gracza pozostaj¹cego w grze z punktami rozdaj¹cego
+                # porÃ³wnaj punkty kaÅ¼dego gracza pozostajÄ…cego w grze z punktami rozdajÄ…cego
                 for player in self.still_playing:
                     if player.total > self.dealer.total:
                         player.win()
@@ -176,7 +176,7 @@ class BJ_Game(object):
                     else:
                         player.push()
 
-        # usuñ karty wszystkich graczy
+        # usuÅ„ karty wszystkich graczy
         for player in self.players:
             player.clear()
         self.dealer.clear()
@@ -186,9 +186,9 @@ def main():
     print("\t\tWitaj w grze 'Blackjack'!\n")
 
     names = []
-    number = gry.ask_number("Podaj liczbê graczy (1 - 7): ", low=1, high=8)
+    number = gry.ask_number("Podaj liczbÄ™ graczy (1 - 7): ", low=1, high=8)
     for i in range(number):
-        name = input("WprowadŸ nazwê gracza: ")
+        name = input("WprowadÅº nazwÄ™ gracza: ")
         names.append(name)
     print()
 
@@ -197,7 +197,7 @@ def main():
     again = None
     while again != "n":
         game.play()
-        again = gry.ask_yes_no("\nCzy chcesz zagraæ ponownie?: ")
+        again = gry.ask_yes_no("\nCzy chcesz zagraÄ‡ ponownie?: ")
 
 
 main()

@@ -1,5 +1,5 @@
-#-*- coding: windows-1250 -*-
-# Modu³ karty
+ï»¿# coding: utf-8
+# ModuÅ‚ karty
 # Podstawowe klasy do gry w karty
 
 class Card(object):
@@ -24,7 +24,7 @@ class Card(object):
         self.is_face_up = not self.is_face_up
       
 class Hand(object):
-    """ Rêka - wszystkie karty trzymane przez gracza. """
+    """ RÄ™ka - wszystkie karty trzymane przez gracza. """
     def __init__(self):
         self.cards = []
 
@@ -70,10 +70,10 @@ class Deck(Hand):
                     top_card = self.cards[0]
                     self.give(top_card, hand)
                 else:
-                    print("Nie mogê dalej rozdawaæ. Zabrak³o kart!")
+                    print("Nie mogÄ™ dalej rozdawaÄ‡. ZabrakÅ‚o kart!")
 
 
 
 if __name__ == "__main__":
-    print("To modu³ zawieraj¹cy klasy do gry w karty.")
-    input("\n\nAby zakoñczyæ program, naciœnij klawisz Enter.")
+    print("To moduÅ‚ zawierajÄ…cy klasy do gry w karty.")
+    input("\n\nAby zakoÅ„czyÄ‡ program, naciÅ›nij klawisz Enter.")
