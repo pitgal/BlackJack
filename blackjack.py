@@ -184,7 +184,7 @@ class BJ_Game(object):
 
 def main():
     print("\t\tWitaj w grze 'Blackjack'!\n")
-
+    print("wersja testowa")
     names = []
     number = gry.ask_number("Podaj liczbę graczy (1 - 7): ", low=1, high=8)
     for i in range(number):
