@@ -70,7 +70,7 @@ class BJ_Hand(karty.Hand):
         return self.total > 21
 
     def is_21(self):
-        return self.total == 21        
+        return self.total == 21
 
 
 class BJ_Player(BJ_Hand):
